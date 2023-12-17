@@ -1,0 +1,220 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@1,600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --mainBG-light: #e8ddd0;
+  --mainBG-dark: #433c32;
+  --toggleButton-visible: 1;
+  --toggleButton-hide: 0;
+
+  --clockFace-light: #f7f3e7;
+  --clockFace-dark: #1e1c1d;
+  --clockBG-light: #d8c7b0;
+  --clockBG-dark: #756b5c;
+
+  --hourColor-light: #1e1c1d;
+  --hourColor-dark: #f7f3e7;
+
+  --minColor-light: #a79a86;
+  --minColor-dark: #a79a86;
+
+  --secColor-light: #d9cbbe;
+  --secColor-dark: #433c32;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mainBG: var(--mainBG-dark);
+    --lightModeButton: var(--toggleButton-visible);
+    --darkModeButton: var(--toggleButton-hide);
+    --clockFace: var(--clockFace-dark);
+    --clockBG: var(--clockBG-dark);
+    --hourColor: var(--hourColor-dark);
+    --minColor: var(--minColor-dark);
+    --secColor: var(--secColor-dark);
+  }
+}
+
+[colors="dark"] {
+  --mainBG: var(--mainBG-dark);
+  --lightModeButton: var(--toggleButton-visible);
+  --darkModeButton: var(--toggleButton-hide);
+  --clockFace: var(--clockFace-dark);
+  --clockBG: var(--clockBG-dark);
+  --hourColor: var(--hourColor-dark);
+  --minColor: var(--minColor-dark);
+  --secColor: var(--secColor-dark);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --mainBG: var(--mainBG-light);
+    --lightModeButton: var(--toggleButton-hide);
+    --darkModeButton: var(--toggleButton-visible);
+    --clockFace: var(--clockFace-light);
+    --clockBG: var(--clockBG-light);
+    --hourColor: var(--hourColor-light);
+    --minColor: var(--minColor-light);
+    --secColor: var(--secColor-light);
+  }
+}
+
+[colors="light"] {
+  --mainBG: var(--mainBG-light);
+  --lightModeButton: var(--toggleButton-hide);
+  --darkModeButton: var(--toggleButton-visible);
+  --clockFace: var(--clockFace-light);
+  --clockBG: var(--clockBG-light);
+  --hourColor: var(--hourColor-light);
+  --minColor: var(--minColor-light);
+  --secColor: var(--secColor-light);
+}
+
+body {
+  background-color: var(--mainBG);
+  font-family: "IBM Plex Mono", monospace;
+}
+
+#clockArea {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.5);
+}
+
+#toggle {
+  position: absolute;
+  transform: translate(calc(100vw - 160px), 16px);
+  cursor: pointer;
+  color: var(--hourColor);
+}
+
+#lightMode {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 1;
+  opacity: var(--lightModeButton);
+}
+
+#darkMode {
+  position: absolute;
+  font-size: 1.5rem;
+  z-index: 2;
+  opacity: var(--darkModeButton);
+}
+
+#clockBG {
+  background-color: var(--clockBG);
+  border-radius: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 560px;
+  height: 560px;
+}
+
+#clockFace {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  background-color: var(--clockFace);
+  border-radius: 32px;
+  width: 512px;
+  height: 512px;
+  overflow: hidden;
+}
+
+#circleStack {
+  margin-left: 16px;
+}
+
+#hourNumber,
+#minNumber,
+#secNumber {
+  font-size: 240px;
+  line-height: 1;
+  margin-top: -56px;
+}
+
+#hourNumber {
+  margin-top: -24px;
+  color: var(--hourColor);
+}
+#minNumber {
+  color: var(--minColor);
+}
+#secNumber {
+  color: var(--secColor);
+}
+
+#hourCircle,
+#minCircle,
+#secCircle {
+  margin-top: 12px;
+  border-radius: 50%;
+  height: 180px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#hourCircle {
+  box-shadow: inset 0 0 0 24px var(--hourColor);
+}
+
+#minCircle {
+  box-shadow: inset 0 0 0 24px var(--minColor);
+}
+
+#secCircle {
+  box-shadow: inset 0 0 0 24px var(--secColor);
+}
+
+#hourHand,
+#minHand,
+#secHand {
+  display: block;
+  height: 44px;
+  width: 44px;
+}
+
+#hourHand {
+  border-top: 20px solid var(--hourColor);
+  border-left: 20px solid var(--hourColor);
+}
+#minHand {
+  border-top: 20px solid var(--minColor);
+  border-left: 20px solid var(--minColor);
+}
+#secHand {
+  border-top: 20px solid var(--secColor);
+  border-left: 20px solid var(--secColor);
+}
+
+#hourHand::after,
+#minHand::after,
+#secHand::after {
+  content: "";
+  display: block;
+  width: 20px;
+  height: 64px;
+  transform: rotate(-45deg) translate(16px, 00px);
+  border-radius: 40px;
+}
+
+#hourHand::after {
+  background-color: var(--hourColor);
+}
+#minHand::after {
+  background-color: var(--minColor);
+}
+#secHand::after {
+  background-color: var(--secColor);
+}
