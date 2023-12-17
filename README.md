@@ -1,7 +1,11 @@
 # Neo\Brutal\Clock
 
-tellsTime 🕓 && changesColor ☀️🌑 && isCool 😎
+tells🕓 && changes☀️🌑 && looks😎
 
 ||
 
-BreaksIn(iOS) 🤫
+BreaksIn(iOS) = () => 🤫
+
+---
+
+[CodePen](https://codepen.io/suraj-thotakura/pen/zYegoyx)
