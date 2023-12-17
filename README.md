@@ -4,7 +4,7 @@ tells🕓 && changes☀️🌑 && looks😎
 
 ||
 
-BreaksIn(iOS) = () => 🤫
+BreaksIn(mobile) = () => 🤫
 
 ---
 
